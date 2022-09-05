@@ -1,0 +1,37 @@
+{
+    "development": {
+      "username": "postgres",
+      "password": "sofiskript",
+      "database": "skript_projekat",
+      "host": "127.0.0.1",
+      "port": 5433,
+      "dialect": "postgres",
+      "logging": false
+    },
+    "test": {
+        "username": "postgres",
+        "password": "sofiskript",
+        "database": "skript_projekat",
+        "host": "127.0.0.1",
+        "port": 5433,
+        "dialect": "postgres",
+        "logging": false
+    },
+    "production": {
+      "username": "neqjfqjbsoztsv",
+      "password": "2e7a3113c2311f34ba9666a414acf2aac072637ee8d3575501606c1d882f5710",
+      "database": "dahnfn7j8qq7q5",
+      "host": "ec2-34-255-225-151.eu-west-1.compute.amazonaws.com",
+      "port": 5432,
+      "dialect": "postgres",
+      "logging": false,
+      "sll": true,
+      "dialectOptions": {
+        "ssl": {
+          "require": true,
+          "rejectUnauthorized": false
+        }
+      }
+    }
+  }
+  
