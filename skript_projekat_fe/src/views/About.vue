@@ -1,5 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <NavBarNotLoggedIn />
+    <div class="about">
+      <h1>About page</h1>
+    </div>
   </div>
-</template>
+  </template>
+  
+  <script>
+  import NavBarNotLoggedIn from './NavBarNotLoggedIn.vue'
+  
+  export default {
+    name: 'About',
+    components: {
+      NavBarNotLoggedIn
+    }
+  }
+  </script>

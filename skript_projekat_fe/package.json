@@ -8,12 +8,11 @@
   },
   "dependencies": {
     "boostrap": "^2.0.0",
-    "bootstrap-vue": "^2.22.0",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
+    "vue-3-socket.io": "^1.0.5",
     "vue-joi-validation": "^1.0.9",
     "vue-router": "^4.0.0-0",
-    "vue-socket.io": "^3.0.10",
     "vue-template-compiler": "^2.7.10",
     "vuex": "^4.0.0-0"
   },

@@ -1,20 +1,12 @@
-// class zaposleni{
-//     constructor(
-//         id_zaposlenog, //id
-//         ime,
-//         prezime,
-//         mail,
-//         tip
-//     )
-// }
-
+'use strict'
 const {
     Model
 } = require ('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Zaposleni extends Model {
-        static associate({Rezevacija}) {
-            // this.hasMany(Rezevacija, {foreignKey: 'korisnikId'});
+        static associate({Rezervacija, Masaza}) {
+            this.hasMany(Rezervacija, {foreignKey: 'korisnikId'});
+            this.hasMany(Masaza, {foreignKey: 'masazerId'})
         }
 
     }
@@ -48,7 +40,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        sequelize
+        sequelize,
+        modelName: 'Zaposleni'
     });
     return Zaposleni;
 };

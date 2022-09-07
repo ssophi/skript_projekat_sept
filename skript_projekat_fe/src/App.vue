@@ -1,10 +1,37 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <Header />
+    <!-- <NavBarNotLoggedIn /> -->
+    <router-view/>
+    <!-- <NavBarLoggedIn /> -->
+    <!-- <Home v-bind:treninzi="treninzi" v-bind:masaze="masaze"/> -->
+    <!-- <div>
+      <p> </p>
+    </div> -->
+    <NavBar />
   </div>
-  <router-view/>
 </template>
+
+<script>
+  import Header from './views/Header.vue'
+  import NavBarNotLoggedIn from './views/NavBarNotLoggedIn.vue'
+  import NavBarLoggedIn from './components/NavBarLoggedIn.vue'
+  import NavBar from './components/NavBar.vue'
+  // import Home from './views/Home.vue'
+  
+  
+  export default {
+    name: 'App',
+    components: {
+      Header,
+      NavBarNotLoggedIn,
+      NavBarLoggedIn,
+      NavBar
+      // Home
+    }
+  
+  }
+  </script>
 
 <style>
 #app {
@@ -15,7 +42,7 @@
   color: #2c3e50;
 }
 
-#nav {
+/* #nav {
   padding: 30px;
 }
 
@@ -26,5 +53,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>

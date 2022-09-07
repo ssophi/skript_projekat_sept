@@ -1,25 +1,17 @@
-// class Termin{
-//     constructor(
-//         id_termina, //id
-//         dan,
-//         sati_od,
-//         sati_do,
-//         trening,
-//         masaza
-//     )
-// }
-
-
+'use strict'
 const {
     Model
 } = require ('sequelize');
+const Masaza = require('./Masaza');
+const Trening = require('./Trening');
+
 module.exports = (sequelize, DataTypes) => {
     class Termin extends Model {
-        static associate({Trening, Masaza}) {
-            this.belongsTo(Masaza, {foreignKey: 'id'});
-            this.belongsTo(Trening, {foreignKey: 'id'});
+        static associate({Masaza, Trening}) {
+            this.belongsTo(Masaza,{ foreignKey: 'masazaId', sourceKey: 'id'}),
+            this.belongsTo(Trening,{ foreignKey: 'treningId', sourceKey: 'id'})
         }
-
+        
     }
 
     Termin.init({
@@ -46,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
         }
         
     }, {
-        sequelize
+        sequelize,
+        modelName: 'Termin'
     });
     return Termin;
 };

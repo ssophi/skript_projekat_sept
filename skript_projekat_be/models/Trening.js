@@ -1,28 +1,22 @@
-// class trening{
-//     constructor(
-//         id_treninga, //id
-//         tip,
-//         termini,
-//         trener,
-//         prostorija
-//     )
-// }
-
 
 const {
     Model
 } = require ('sequelize');
+const Termin = require('./Termin');
+const Prostorija = require('./Prostorija');
 module.exports = (sequelize, DataTypes) => {
     class Trening extends Model {
-        static associate({Zaposleni, Prostorija}) {
-            this.belongsTo(Zaposleni, {foreignKey: 'id'});
-            this.belongsTo(Prostorija, {foreignKey: 'id'});
+        static associate({Termin}) {
+            this.hasMany(Termin, {foreignKey: 'treningId'})
+        }
+        static associate({Prostorija}) {
+            this.belongsTo(Prostorija, {foreignKey: 'prostorijaId', sourceKey: 'id'})
         }
 
     }
 
     Trening.init({
-        tipan: {
+        tip: {
             type: DataTypes.STRING,
             defaultValue: null
         },
@@ -33,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
         }        
     }, {
-        sequelize
+        sequelize,
+        modelName: 'Trening'
     });
     return Trening;
 };

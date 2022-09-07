@@ -1,40 +1,25 @@
-// class masaza{
-//     constructor(
-//         id_masaze, //id
-//         tip,
-//         termini,
-//         masazer,
-//         prostorija
-//     )
-// }
-
 'use strict';
 const {
     Model
 } = require ('sequelize');
+const Termin = require('./Termin');
+const Prostorija = require('./Prostorija');
 module.exports = (sequelize, DataTypes) => {
     class Masaza extends Model {
-        static associate({Zaposleni, Prostorija}) {
-            this.belongsTo(Zaposleni, {foreignKey: 'id'});
-            this.belongsTo(Prostorija, {foreignKey: 'id'});
+        static associate({Termin}) {
+            this.hasMany(Termin,{ foreignKey:'masazaId'})
+        }
+        static associate({Prostorija}) {
+            this.belongsTo(Prostorija, { foreignKey: 'prostorijaId', sourceKey: 'id'})
         }
         
     }
 
     Masaza.init({
-        // id: {
-        //     type: DataTypes.INTEGER,
-        //     primaryKey: true,
-        //     autoIncrement: true
-        // },
         tip: {
             type: DataTypes.STRING,
             allowNull: true,
             defaultValue: null
-        },
-        termini: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         },
         masazerId: {
             type: DataTypes.INTEGER,

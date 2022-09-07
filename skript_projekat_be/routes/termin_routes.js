@@ -1,11 +1,14 @@
-const express = require('express');
-const { sequelize, Users, Messages } = require('../models');
+const express=require('express');
+const router=express.Router();
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
+const { Op } = require("sequelize");
 
-const route = express.Router();
-route.use(express.json());
-route.use(express.urlencoded({ extended: true }));
+const { sequelize, Termin, Masaza, Trening, Prostorija } = require('../models');
+
+router.use(express.json());
+router.use(express.urlencoded({extended: true}));
 
 function authToken(req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -23,48 +26,114 @@ function authToken(req, res, next) {
     });
 }
 
-route.use(authToken);
+router.use(authToken);
 
-//get one termin by id
-route.get('/termin/:id', (req, res) => {
-    MyUser.getById({artUsername: req.params.username, include: ['user']})
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
+
+//get slobodne masaze
+router.get('/sm/:dan', (req, res) =>{
+    Termin.findAll({
+        // where: {masazaId: {[Op.not]: null}}
+        include: [{
+            model: Masaza
+        }],
+        where: {dan: req.params.dan, masazaId:{[Op.ne]: null}, slobodna: {[Op.gt]: 0} }
+    })
+    .then  (rows => res.json(rows) )
+    .catch( err => res.status(500).json(err) );
 })
 
-//get all termini
-route.get('/termin', (req, res) => {
-    MyUser.getAll()
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
+//get slobodni treninzi
+router.get('/st/:dan', (req, res) =>{
+    Termin.findAll({
+        include: [{
+            model: Trening
+        }],
+        where: {dan: req.params.dan,  treningId:{[Op.ne]: null}, slobodna: {[Op.gt]: 0} }
+    })
+    .then  (rows => res.json(rows) )
+    .catch( err => res.status(500).json(err) );
 })
 
-//create termin
-route.post('/termin', (req, res) => {
-    MyUser.createTermin({artUsername: req.params.username, include: ['user']})
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
+//reset slobodnih mesta
+router.put('/reset', (req, res) => {
+    let termini;
+
+        Termin.findAll({where: {treningId: {[Op.ne]: null}}})
+        .then (data => {termini=data
+            termini.forEach( term => {
+               Prostorija.findOne({
+                include:[{
+                    model: Trening,
+                    where: {id:term.treningId}
+                }]
+               })
+               .then (data =>{
+               const novitermin= {
+                id: term.id,
+                dan: term.dan,
+                sati_od: term.sati_od,
+                sati_do: term.sati_do,
+                treningId: term.treningId,
+                masazaId: term.masazaId,
+                slobodna: data.kapacitet
+               };
+               Termin.update(novitermin, {where: {id: novitermin.id}})
+               .then(num =>{
+                   if (num==1){
+                       console.log("Uspesan update");
+                   } else {
+                       console.log("Nije dobar id");
+                   }
+               })
+               .catch(err =>{res.status(500).json(err)}); 
+            
+                })
+                
+            })
+
+            
+        })
+        .catch (err => res.status(500).json(err));
+
+        Termin.findAll({where: {masazaId: {[Op.ne]: null}}})
+        .then (data => {termini=data
+            termini.forEach( term => {
+               Prostorija.findOne({
+                include:[{
+                    model: Masaza,
+                    where: {id:term.masazaId}
+                }]
+               })
+               .then (data =>{
+               const novitermin= {
+                id: term.id,
+                dan: term.dan,
+                sati_od: term.sati_od,
+                sati_do: term.sati_do,
+                treningId: term.treningId,
+                masazaId: term.masazaId,
+                slobodna: data.kapacitet
+               };
+               Termin.update(novitermin, {where: {id: novitermin.id}})
+               .then(num =>{
+                   if (num==1){
+                       console.log("Uspesan update");
+                   } else {
+                       console.log("Nije dobar id");
+                   }
+               })
+               .catch(err =>{res.status(500).json(err)}); 
+            
+                })
+                
+            })
+
+            
+        })
+        .catch (err => res.status(500).json(err));
+        termini=[{message : "sve vraceno"}]
+        res.send(termini);
+        
 })
 
-//update termin
-route.put('/termin', (req, res) => {
-    MyUser.updateTermin({artUsername: req.params.username, include: ['user']})
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
-})
-
-//delete termin
-route.delete('/termin', (req, res) => {
-    MyUser.deleteTermin({artUsername: req.params.username, include: ['user']})
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
-})
-
-//reset slobodnih termina
-route.get('/termin/reset', (req, res) => {
-    Messages.reset({ where: { artId: req.params.id }, include: ['user'] })
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
-});
-
-module.exports = route;
+module.exports = router;

@@ -2,10 +2,11 @@
 const {
     Model
 } = require ('sequelize');
+const Rezervacija = require('./Rezervacija.js')
 module.exports = (sequelize, DataTypes) => {
     class Myuser extends Model {
-        static associate({Rezevacija}) {
-            // this.hasMany(Rezevacija, {foreignKey: 'korisnikId'});
+        static associate({Rezervacija}) {
+            this.hasMany(Rezervacija, {foreignKey: 'korisnikId'});
         }
 
     }
@@ -39,7 +40,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        sequelize
+        sequelize,
+        modelName: 'Myuser'
     });
     return Myuser;
 };

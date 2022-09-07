@@ -1,7 +1,10 @@
-const express = require('express');
-const { sequelize, Users, Messages } = require('../models');
+const express=require('express');
+const router=express.Router();
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
+
+const { sequelize, Trening } = require('../models');
 
 const route = express.Router();
 route.use(express.json());
@@ -23,11 +26,13 @@ function authToken(req, res, next) {
     });
 }
 
-route.use(authToken);
+// route.use(authToken);
 
-//get slobodane treninge
-route.get('/termin/st/:dan', (req, res) => {
-    Messages.findAll({ where: { artId: req.params.id }, include: ['user'] })
+//get treninzi
+router.get('/', (req, res) => {
+    Trening.findAll()
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 });
+
+module.exports = router;

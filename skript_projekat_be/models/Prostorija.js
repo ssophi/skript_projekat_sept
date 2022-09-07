@@ -1,23 +1,18 @@
-// class prostorija{
-//     constructor(
-//         id_prostorije, //id
-//         tip,
-//         broj_sale,
-//         povrsina,
-//         kapacitet
-//     )
-// }
-
+'use strict'
 const {
     Model
 } = require ('sequelize');
+const Masaza = require('./Masaza');
+const Trening = require('./Trening');
 module.exports = (sequelize, DataTypes) => {
     class Prostorija extends Model {
-        static associate ({Masaza}) {
+        static associate ({Masaza, Trening}) {
             this.hasMany(Masaza,{foreignKey: 'prostorijaId'})
+            this.hasMany(Trening,{foreignKey: 'prostorijaId'})
         }
-
+        
     };
+    
     Prostorija.init({
         tip: {
             type: DataTypes.STRING,
@@ -37,7 +32,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        sequelize
+        sequelize,
+        modelName: 'Prostorija'
     });
     return Prostorija;
 };

@@ -1,7 +1,10 @@
-const express = require('express');
-const { sequelize, Users, Messages } = require('../models');
+const express=require('express');
+const router=express.Router();
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
+
+const { sequelize, Masaza } = require('../models');
 
 const route = express.Router();
 route.use(express.json());
@@ -23,11 +26,13 @@ function authToken(req, res, next) {
     });
 }
 
-route.use(authToken);
+// route.use(authToken);
 
-//get slobodane masaze
-route.get('/termin/sm/:dan', (req, res) => {
-    Messages.findAll({ where: { artId: req.params.id }, include: ['user'] })
+//get masaze
+router.get('/', (req, res) => {
+    Masaza.findAll()
         .then( rows => res.json(rows) )
         .catch( err => res.status(500).json(err) );
 });
+
+module.exports = router;

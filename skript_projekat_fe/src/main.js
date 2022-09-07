@@ -4,29 +4,61 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-import VueSocketIO from 'vue-socket.io';
+// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap-vue/dist/bootstrap-vue.css';
+import VueSocketIO from 'vue-3-socket.io';
 
 // createApp(App).use(store).use(router).mount('#app')
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
+// Vue.use(BootstrapVue);
+// Vue.use(IconsPlugin);
 
-Vue.use(new VueSocketIO({
-  debug: false,
-  connection: 'http://vezbe131.herokuapp.com',
-  vuex: {
-      store,
-      actionPrefix: 'socket_',
-  }
-}));
+// app = Vue.createApp({
+//   router
+// })
 
-Vue.config.productionTip = false;
+const app = createApp(App)
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app');
+// app.use(new VueSocketIO({
+//   debug: false,
+//   connection: 'http://192.168.88.238:5000',
+//   vuex: {
+//       store,
+//       actionPrefix: 'socket_',
+//   }
+// }));
+const io = require("socket.io-client");
+const socket = io("http://192.168.88.238:5000", {
+  withCredentials: true,
+//   extraHeaders: {
+//     "my-custom-header": "abcd"
+//   }
+});
+
+// app.config.productionTip = false;
+// app.mount('#app')
+
+// new Vue({
+//   router,
+//   store,
+//   render: h => h(App)
+// }).$mount('#app');
+
+
+// createApp(App).use(store).use(router).mount('#app')
+app.use(socket)
+app.use(store)
+app.use(router)
+
+// app.use(new VueSocketIO())
+//   ({
+//   debug: false,
+//   // connection: '',
+//   vuex: {
+//       store,
+//       actionPrefix: 'socket_',
+//   }
+// });
+
+app.mount('#app')

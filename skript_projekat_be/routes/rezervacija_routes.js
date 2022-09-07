@@ -1,11 +1,15 @@
-const express = require('express');
-const { sequelize, Users, Messages } = require('../models');
+const express=require('express');
+const router=express.Router();
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
+const { Op } = require("sequelize");
 
-const route = express.Router();
-route.use(express.json());
-route.use(express.urlencoded({ extended: true }));
+const { sequelize, Termin, Myuser } = require('../models');
+const Rezervacija = require('../models/Rezervacija');
+
+router.use(express.json());
+router.use(express.urlencoded({extended: true}));
 
 function authToken(req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -23,11 +27,25 @@ function authToken(req, res, next) {
     });
 }
 
-route.use(authToken);
+router.use(authToken);
 
-//create rezervacija
-route.post('/rezervacija', (req, res) => {
-    MyUser.createRezervacija({artUsername: req.params.username, include: ['user']})
-        .then( rows => res.json(rows) )
-        .catch( err => res.status(500).json(err) );
+// rezervisi trening
+router.post('/rt',(req, res) => {
+    let korId;
+    Myuser.findOne({where: {username:req.body.username}})
+    .then (kor => korId=kor.id)
+    .catch (err => res.status(500).json(err));
+
+    const rez ={
+        korisnikId: korId,
+        terminId: req.body.terminId
+    }
+
+    Rezervacija.create(rez)
+    .then (data => {
+        //smanji slobodno
+    })
+
 })
+
+module.exports = router;
