@@ -39,7 +39,7 @@ app_auth.use(bodyParser.json());
 
 var corsOptions = {
     credentials: true,
-    origin: 'http://192.168.88.231:8080',
+    origin: 'http://localhost:8080',
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
@@ -92,11 +92,11 @@ function authToken(req, res, next) {
 const io = require("socket.io")(server, {
     // path: '/socket.io',
     cors: {
-        origin: "http://192.168.88.231:8080",
+        origin: "http://localhost:8080",
         credentials: true
     },
 
-    origins: ["http://192.168.88.231:8080"],
+    origins: ["http://localhost:8080"],
     methods: ['GET', 'POST'],
             credentials: true,        
             allowEIO3: true
@@ -105,11 +105,11 @@ const io = require("socket.io")(server, {
   const io_auth = require("socket.io")(server_auth, {
     // path: '/socket.io',
     cors: {
-        origin: "http://192.168.88.231:8080",
+        origin: "localhost:8080",
         credentials: true
     },
 
-    origins: ["http://192.168.88.231:8080"],
+    origins: ["http://localhost:8080"],
     methods: ['GET', 'POST'],
             credentials: true,        
             allowEIO3: true

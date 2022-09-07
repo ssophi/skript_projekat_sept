@@ -119,7 +119,7 @@ export default createStore({
 
     fetchMasaze({ commit }) {
       console.log("cao iz fetch masaze")
-      fetch('http://192.168.88.238:5000/masaza', {
+      fetch('http://localhost/masaza', {
         headers : { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -132,7 +132,7 @@ export default createStore({
 
     fetchTreninzi({ commit }) {
       console.log("cao iz fetch treninzi")
-      fetch('http://192.168.88.238:5000/trening', {
+      fetch('http://localhost:5000/trening', {
         headers : { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -144,7 +144,7 @@ export default createStore({
 
     fetchUser({ commit }) {
       // console.log("dohvatam usera http://192.168.88.238:5000/user/" + localStorage.getItem('username'))
-      fetch('http://192.168.88.238:5000/user/' + localStorage.getItem('username'), {
+      fetch('http://localhost:5000/user/' + localStorage.getItem('username'), {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -157,7 +157,7 @@ export default createStore({
     },
 
     login({ commit }, obj) {
-      fetch('http://192.168.88.238:9000/login', {
+      fetch('http://localhost:9000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(obj)
@@ -175,7 +175,7 @@ export default createStore({
     },
 
     register({ commit }, obj) {
-      fetch('http://192.168.88.238:9000/register', {
+      fetch('http://localhost:9000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(obj)
@@ -184,7 +184,7 @@ export default createStore({
     },
 
     reserveTrening({ commit }, obj) {
-      fetch('http://192.168.88.238:5000/rezervacija/rt', { //srediti url
+      fetch('http://localhost:5000/rezervacija/rt', { //srediti url
         method: 'POST',
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -197,7 +197,7 @@ export default createStore({
 
     
     fetchSlobodneMasazePonedeljak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/1', {
+      fetch('http://localhost:5000/termin/sm/1', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -209,7 +209,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeUtorak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/2', {
+      fetch('http://localhost:5000/termin/sm/2', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -221,7 +221,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeSreda({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/3', {
+      fetch('http://localhost:5000/termin/sm/3', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -233,7 +233,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeCetvrtak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/4', {
+      fetch('http://localhost:5000/termin/sm/4', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -245,7 +245,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazePetak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/5', {
+      fetch('http://localhost:5000/termin/sm/5', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -257,7 +257,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeSubota({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/6', {
+      fetch('http://localhost:5000/termin/sm/6', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -269,7 +269,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeNedelja({ commit }){
-      fetch('http://192.168.88.238:5000/termin/sm/7', {
+      fetch('http://localhost:5000/termin/sm/7', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -284,7 +284,7 @@ export default createStore({
 
     fetchSlobodneTreningPonedeljak({ commit }){
       console.log("pozz is fetch ponedeljak")
-      fetch('http://192.168.88.238:5000/termin/st/1', {
+      fetch('http://localhost:5000/termin/st/1', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -296,7 +296,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningUtorak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/st/2', {
+      fetch('http://localhost:5000/termin/st/2', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -308,7 +308,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningSreda({ commit }){
-      fetch('http://192.168.88.238:5000/termin/st/3', {
+      fetch('http://localhost:5000/termin/st/3', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -320,7 +320,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningCetvrtak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/st/4', {
+      fetch('http://localhost:5000/termin/st/4', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -332,7 +332,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningPetak({ commit }){
-      fetch('http://192.168.88.238:5000/termin/st/5', {
+      fetch('http://localhost:5000/termin/st/5', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -344,7 +344,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningSubota({ commit }){
-      fetch('http://192.168.88.238:5000/termin/st/6', {
+      fetch('http://localhost:5000/termin/st/6', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
@@ -356,7 +356,7 @@ export default createStore({
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningNedelja({ commit }){
-      fetch('http://192.168.88.238:5000/termin/st/7', {
+      fetch('http://localhost:5000/termin/st/7', {
         // headers: { 'Authorization': `Bearer ${state.token}` } })
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),
