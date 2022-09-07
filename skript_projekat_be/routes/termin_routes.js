@@ -32,7 +32,6 @@ router.use(authToken);
 //get slobodne masaze
 router.get('/sm/:dan', (req, res) =>{
     Termin.findAll({
-        // where: {masazaId: {[Op.not]: null}}
         include: [{
             model: Masaza
         }],

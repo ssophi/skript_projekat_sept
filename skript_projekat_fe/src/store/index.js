@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import router from '../router'
 
 export default createStore({
   state: {
@@ -119,7 +120,7 @@ export default createStore({
 
     fetchMasaze({ commit }) {
       console.log("cao iz fetch masaze")
-      fetch('http://localhost/masaza', {
+      fetch('http://localhost:5000/masaza', {
         headers : { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -170,6 +171,7 @@ export default createStore({
           // commit('setUsername', )
           console.log(localStorage.getItem('token'))
           console.log(localStorage.getItem('username'))
+          router.push('/user');
         }
       });
     },
@@ -205,7 +207,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazePonedeljak', res) });
+          .then( res => {commit('addMasazePonedeljak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeUtorak({ commit }){
@@ -217,7 +222,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazeUtorak', res) });
+          .then( res => {commit('addMasazeUtorak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeSreda({ commit }){
@@ -229,7 +237,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazeSreda', res) });
+          .then( res => {commit('addMasazeSreda', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeCetvrtak({ commit }){
@@ -241,7 +252,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazeCetvrtak', res) });
+          .then( res => {commit('addMasazeCetvrtak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazePetak({ commit }){
@@ -253,7 +267,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazePetak', res) });
+          .then( res => {commit('addMasazePetak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeSubota({ commit }){
@@ -265,7 +282,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazeSubota', res) });
+          .then( res => {commit('addMasazeSubota', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneMasazeNedelja({ commit }){
@@ -277,7 +297,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addMasazeNedelja', res) });
+          .then( res => {commit('addMasazeNedelja', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
 
@@ -292,7 +315,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningPonedeljak', res) });
+          .then( res => {commit('addTreningPonedeljak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningUtorak({ commit }){
@@ -304,7 +330,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningUtorak', res) });
+          .then( res => {commit('addTreningUtorak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningSreda({ commit }){
@@ -316,7 +345,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningSreda', res) });
+          .then( res => {commit('addTreningSreda', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningCetvrtak({ commit }){
@@ -328,7 +360,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningCetvrtak', res) });
+          .then( res => {commit('addTreningCetvrtak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningPetak({ commit }){
@@ -340,7 +375,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningPetak', res) });
+          .then( res => {commit('addTreningPetak', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningSubota({ commit }){
@@ -352,7 +390,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningSubota', res) });
+          .then( res => {commit('addTreningSubota', res) })
+          .catch(err => {
+            console.log(err)
+            router.push('/')})
         // .then(res => console.log(res[0]))
     },
     fetchSlobodneTreningNedelja({ commit }){
@@ -364,7 +405,10 @@ export default createStore({
           'Accept': 'application/json' } 
         })
           .then( obj => obj.json() )
-          .then( res => {commit('addTreningNedelja', res) });
+          .then( res => {commit('addTreningNedelja', res) })
+          .catch(err => {
+            console.log("greska" + err)
+            router.push('/#/')})
         // .then(res => console.log(res[0]))
     },
   },

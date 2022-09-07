@@ -4,7 +4,7 @@
       "password": "sofiskript",
       "database": "skript_projekat",
       "host": "127.0.0.1",
-      "port": 5433,
+      "port": 5432,
       "dialect": "postgres",
       "logging": false
     },
@@ -13,7 +13,7 @@
         "password": "sofiskript",
         "database": "skript_projekat",
         "host": "127.0.0.1",
-        "port": 5433,
+        "port": 5432,
         "dialect": "postgres",
         "logging": false
     },

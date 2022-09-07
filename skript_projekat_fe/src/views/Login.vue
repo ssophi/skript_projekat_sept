@@ -50,7 +50,7 @@ export default {
 
         this.login(this.form);
         localStorage.setItem('username', this.form.username)
-        this.$router.push('/user');
+        // this.$router.push('/user');
       }
   }
 }
