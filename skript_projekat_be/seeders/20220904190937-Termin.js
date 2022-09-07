@@ -3,6 +3,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Termins', [{
+      id: 1,
       dan: 4,
       sati_od: 19,
       sati_do: 20,
@@ -13,6 +14,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 2,
       dan: 4,
       sati_od: 18,
       sati_do: 19,
@@ -23,6 +25,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 3,
       dan: 4,
       sati_od: 20,
       sati_do: 21,
@@ -33,6 +36,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 4,
       dan: 4,
       sati_od: 17,
       sati_do: 18,
@@ -43,6 +47,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 5,
       dan: 4,
       sati_od: 16,
       sati_do: 17,
@@ -53,6 +58,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 6,
       dan: 1,
       sati_od: 10,
       sati_do: 12,
@@ -63,6 +69,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 7,
       dan: 1,
       sati_od: 18,
       sati_do: 19,
@@ -73,6 +80,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 8,
       dan: 4,
       sati_od: 18,
       sati_do: 19,
@@ -83,6 +91,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 9,
       dan: 2,
       sati_od: 10,
       sati_do: 12,
@@ -93,6 +102,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 10,
       dan: 5,
       sati_od: 10,
       sati_do: 12,
@@ -103,6 +113,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 11,
       dan: 2,
       sati_od: 16,
       sati_do: 18,
@@ -113,6 +124,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 12,
       dan: 5,
       sati_od: 18,
       sati_do: 20,
@@ -123,6 +135,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 13,
       dan: 6,
       sati_od: 7,
       sati_do: 8,
@@ -133,6 +146,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 14,
       dan: 7,
       sati_od: 8,
       sati_do: 9,

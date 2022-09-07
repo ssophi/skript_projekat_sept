@@ -3,6 +3,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Zaposlenis', [{
+    id: 1,
      username: 'nikolaus',
      password: 'malteze72',
      ime: 'Nikola',
@@ -13,6 +14,7 @@ module.exports = {
      updatedAt: new Date()
      },
      {
+    id: 2,
     username: 'joca',
     password: 'badza123',
     ime: 'Jovan',
@@ -23,6 +25,7 @@ module.exports = {
     updatedAt: new Date()
     },
     {
+    id: 3,
     username: 'maki',
     password: 'freja55',
     ime: 'Marija',
@@ -33,6 +36,7 @@ module.exports = {
     updatedAt: new Date()
     },
     {
+    id: 4,
     username: 'kimi',
     password: 'dorcol',
     ime: 'Mihajlo',
@@ -43,6 +47,7 @@ module.exports = {
     updatedAt: new Date()
     },
     {
+    id: 5,
     username: 'mimi',
     password: 'djura1920',
     ime: 'Mimi',
@@ -53,6 +58,7 @@ module.exports = {
     updatedAt: new Date()
     },
     {
+    id: 6,
     username: 'enco',
     password: 'theboss',
     ime: 'Enco',
@@ -63,6 +69,7 @@ module.exports = {
     updatedAt: new Date()
     },
     {
+    id: 7,
     username: 'ari',
     password: 'aritheboss',
     ime: 'Ari',

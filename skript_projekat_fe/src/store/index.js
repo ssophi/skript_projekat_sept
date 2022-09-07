@@ -183,8 +183,8 @@ export default createStore({
         .then( tkn => commit('addReservation', tkn.token) );
     },
 
-    reserveTrening({ commit }, obj) {
-      fetch('http://localhost:5000/rezervacija/rt', { //srediti url
+    reserve({ commit }, obj) {
+      fetch('http://localhost:5000/rezervacija', { //srediti url
         method: 'POST',
         headers: { 
           'Authorization': 'Bearer '+  localStorage.getItem('token'),

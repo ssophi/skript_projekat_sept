@@ -3,6 +3,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Prostorijas', [{
+      id: 1,
       tip: 'baletska',
       broj_sale: '1',
       povrsina: '20',
@@ -11,6 +12,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 2,
       tip: 'penjacka',
       broj_sale: '5',
       povrsina: '40',
@@ -19,6 +21,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 3,
       tip: 'cross-fit',
       broj_sale: '3',
       povrsina: '20',
@@ -27,6 +30,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 4,
       tip: 'teretana',
       broj_sale: '2',
       povrsina: '20',
@@ -35,6 +39,7 @@ module.exports = {
       updatedAt: new Date()
       },
       {
+      id: 5,
       tip: 'masaza',
       broj_sale: '7',
       povrsina: '10',
